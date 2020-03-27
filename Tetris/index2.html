@@ -8,29 +8,29 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>테트리스</title>
+    <script
+    src="https://kit.fontawesome.com/2d323a629b.js"
+    crossorigin="anonymous"
+  ></script>
     <style>
       #tetris,
       #next-table {
         border-collapse: collapse;
       }
-      #next-table {
-        position: absolute;
-        left: -64px;
-        top: 0px;
-      }
+
       #tetris td {
-        border: 1px solid black;
+        border: 1px solid rgb(140, 140, 140);
         width: 21px;
         height: 21px;
       }
       #next-table td {
-        border: 1px solid black;
-        width: 13px;
-        height: 13px;
+        border: 1px solid rgb(140, 140, 140);
+        width: 11px;
+        height: 11px;
       }
-      td.white {
+      /* td.white {
         background-color: white;
-      }
+      } */
       td.red {
         background-color: red;
       }
@@ -62,64 +62,153 @@
         align-items: center;
         width: 100%;
         position: relative;
+        margin-bottom: 40px;
       }
       .tet-wrap{
-        background: slategray;
+        background: rgb(255, 241, 164);
         position: relative;
+        border: 12px solid rgb(250, 255, 198);
+        border-radius: 12px;
+        margin-bottom: 20px;
+      }
+      .nt-wrap {
+        position: absolute;
+        left: -74px;
+        top: -12px;
+        background: rgb(255, 241, 164);
+        border-top: 12px solid rgb(250, 255, 198);;
+        border-left: 12px solid rgb(250, 255, 198);;
+        border-bottom: 12px solid rgb(250, 255, 198);;
+        border-right: 4px solid rgb(250, 255, 198);;
+        margin: 0;
+        padding: 0;
       }
       body {
         max-width: 375px;
         width: 100%;
+        margin: 0 auto;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         background: sandybrown;
+        position: relative;
       } /* #tetris {
       } */
+      .btn-score{
+        position: relative;
+      }
+      .score{
+        position: absolute;
+        top: -50px;
+        right: 10px;
+        font-size: 34px;
+        font-weight: bold;
+        color: rgb(29, 46, 97);
+      }
+      .push{
+        font-size: 60px;
+        width: 300px;
+        height: 80px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+      }
+      .push_wrap{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+      }
+
+      .push_wrap>div{
+        cursor: pointer;
+        color: rgba(0,0,0,0.7);
+        transition: all 0.2 ease;
+      }
+      .push_wrap>div:hover{
+        color: rgba(255,255,255,0.7);
+      }
+      #ttick{
+        position: absolute;
+        left: -25px;
+        top: -80px;
+        font-size: 40px;
+        padding: 6px 20px;
+      }
+      #rotate{
+        font-size: 40px;
+        position: absolute;
+        right: -30px;
+        top: -80px;
+        padding: 6px 10px;
+      }
     </style>
   </head>
   <body>
       <div class="wrap">
         <div class="tet-wrap">
           <table id="tetris"></table>
-          <table id="next-table">
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </table>
+          <div class="nt-wrap">
+            <table id="next-table">
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <div class="score"><span id="score">0</span></div>
         </div>
 
         <div class="btn-score">
           <button id="stop">중단</button>
           <button id="start">재개</button>
-          <button id="mute">소리끔</button>
-          <div>점수: <span id="score">0</span></div>
         </div>
       </div>
     </div>
-    <audio id="bgm" src="./Tetris_theme.ogg.mp3" autoplay></audio>
+    <div class="push">
+      <div class="push_wrap">
+        <div class="push-Btn" id="ttick">
+          <i class="fas fa-angle-double-down"></i>
+        </div>
+        <div class="push-Btn" id="rotate">
+          <i class="fas fa-redo-alt"></i>
+        </div>
+        <div class="push-Btn" id="left">
+          <i class="fas fa-chevron-circle-left"></i>
+        </div>
+        <div class="push-Btn" id="down">
+          <i class="fas fa-chevron-circle-down"></i>
+        </div>
+        <div class="push-Btn" id="right">
+          <i class="fas fa-chevron-circle-right"></i>
+        </div>
+      </div>
+    </div>
     <script src="js/tetris2.js"></script>
   </body>
 </html>

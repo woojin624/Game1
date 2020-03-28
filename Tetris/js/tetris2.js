@@ -576,189 +576,189 @@ window.addEventListener("keyup", e => {
 // ////////////////////////////////////
 // ////////////////////////////////////
 // ////////////////////////////////////
-// ////////////////////////////////////
-var rightBtn = document.getElementById("right");
-var downBtn = document.getElementById("down");
-var leftBtn = document.getElementById("left");
-var rotateBtn = document.getElementById("rotate");
-var ttickBtn = document.getElementById("ttick");
+// // ////////////////////////////////////
+// var rightBtn = document.getElementById("right");
+// var downBtn = document.getElementById("down");
+// var leftBtn = document.getElementById("left");
+// var rotateBtn = document.getElementById("rotate");
+// var ttickBtn = document.getElementById("ttick");
 
-window.addEventListener("click", ev => {
-  switch (ev.code) {
-    case leftBtn: {
-      // 키보드 왼쪽 클릭 = 좌측 한 칸 이동
-      const nextTopLeft = [currentTopLeft[0], currentTopLeft[1] - 1];
-      let isMovable = true;
-      let currentBlockShape =
-        currentBlock.shape[currentBlock.currentShapeIndex];
-      for (
-        let i = currentTopLeft[0];
-        i < currentTopLeft[0] + currentBlockShape.length;
-        i++
-      ) {
-        // 왼쪽 공간 체크
-        if (!isMovable) break;
-        for (
-          let j = currentTopLeft[1];
-          j < currentTopLeft[1] + currentBlockShape.length;
-          j++
-        ) {
-          if (!tetrisData[i] || !tetrisData[i][j]) continue;
-          if (
-            isActiveBlock(tetrisData[i][j]) &&
-            isInvalidBlock(tetrisData[i] && tetrisData[i][j - 1])
-          ) {
-            console.log(i, j, tetrisData[i][j], tetrisData[i][j - 1]);
-            isMovable = false;
-          }
-        }
-      }
-      console.log("left", "isMovable", isMovable);
-      if (isMovable) {
-        currentTopLeft = nextTopLeft;
-        tetrisData.forEach((col, i) => {
-          for (var j = 0; j < col.length; j++) {
-            const row = col[j];
-            if (tetrisData[i][j - 1] === 0 && row < 10) {
-              console.log(row, tetrisData[i][j - 1], i, j);
-              tetrisData[i][j - 1] = row;
-              tetrisData[i][j] = 0;
-            }
-          }
-        });
-        draw();
-      }
-      break;
-    }
-    case rightBtn: {
-      // 키보드 오른쪽 클릭 = 우측 한 칸 이동
-      const nextTopLeft = [currentTopLeft[0], currentTopLeft[1] + 1];
-      let isMovable = true;
-      let currentBlockShape =
-        currentBlock.shape[currentBlock.currentShapeIndex];
-      for (
-        let i = currentTopLeft[0];
-        i < currentTopLeft[0] + currentBlockShape.length;
-        i++
-      ) {
-        // 오른쪽 공간 체크
-        if (!isMovable) break;
-        for (
-          let j = currentTopLeft[1];
-          j < currentTopLeft[1] + currentBlockShape.length;
-          j++
-        ) {
-          if (!tetrisData[i] || !tetrisData[i][j]) continue;
-          if (
-            isActiveBlock(tetrisData[i][j]) &&
-            isInvalidBlock(tetrisData[i] && tetrisData[i][j + 1])
-          ) {
-            console.log(i, j);
-            isMovable = false;
-          }
-        }
-      }
-      console.log("right", "isMovable", isMovable);
-      if (isMovable) {
-        currentTopLeft = nextTopLeft;
-        tetrisData.forEach((col, i) => {
-          for (var j = col.length - 1; j >= 0; j--) {
-            const row = col[j];
-            if (tetrisData[i][j + 1] === 0 && row < 10) {
-              tetrisData[i][j + 1] = row;
-              tetrisData[i][j] = 0;
-            }
-          }
-        });
-        draw();
-      }
-      break;
-    }
-    case downBtn: {
-      // 키보드 아래쪽 클릭 = 하방측 한 칸 이동
-      tick();
-    }
-  }
-});
+// window.addEventListener("click", ev => {
+//   switch (ev.code) {
+//     case leftBtn: {
+//       // 키보드 왼쪽 클릭 = 좌측 한 칸 이동
+//       const nextTopLeft = [currentTopLeft[0], currentTopLeft[1] - 1];
+//       let isMovable = true;
+//       let currentBlockShape =
+//         currentBlock.shape[currentBlock.currentShapeIndex];
+//       for (
+//         let i = currentTopLeft[0];
+//         i < currentTopLeft[0] + currentBlockShape.length;
+//         i++
+//       ) {
+//         // 왼쪽 공간 체크
+//         if (!isMovable) break;
+//         for (
+//           let j = currentTopLeft[1];
+//           j < currentTopLeft[1] + currentBlockShape.length;
+//           j++
+//         ) {
+//           if (!tetrisData[i] || !tetrisData[i][j]) continue;
+//           if (
+//             isActiveBlock(tetrisData[i][j]) &&
+//             isInvalidBlock(tetrisData[i] && tetrisData[i][j - 1])
+//           ) {
+//             console.log(i, j, tetrisData[i][j], tetrisData[i][j - 1]);
+//             isMovable = false;
+//           }
+//         }
+//       }
+//       console.log("left", "isMovable", isMovable);
+//       if (isMovable) {
+//         currentTopLeft = nextTopLeft;
+//         tetrisData.forEach((col, i) => {
+//           for (var j = 0; j < col.length; j++) {
+//             const row = col[j];
+//             if (tetrisData[i][j - 1] === 0 && row < 10) {
+//               console.log(row, tetrisData[i][j - 1], i, j);
+//               tetrisData[i][j - 1] = row;
+//               tetrisData[i][j] = 0;
+//             }
+//           }
+//         });
+//         draw();
+//       }
+//       break;
+//     }
+//     case rightBtn: {
+//       // 키보드 오른쪽 클릭 = 우측 한 칸 이동
+//       const nextTopLeft = [currentTopLeft[0], currentTopLeft[1] + 1];
+//       let isMovable = true;
+//       let currentBlockShape =
+//         currentBlock.shape[currentBlock.currentShapeIndex];
+//       for (
+//         let i = currentTopLeft[0];
+//         i < currentTopLeft[0] + currentBlockShape.length;
+//         i++
+//       ) {
+//         // 오른쪽 공간 체크
+//         if (!isMovable) break;
+//         for (
+//           let j = currentTopLeft[1];
+//           j < currentTopLeft[1] + currentBlockShape.length;
+//           j++
+//         ) {
+//           if (!tetrisData[i] || !tetrisData[i][j]) continue;
+//           if (
+//             isActiveBlock(tetrisData[i][j]) &&
+//             isInvalidBlock(tetrisData[i] && tetrisData[i][j + 1])
+//           ) {
+//             console.log(i, j);
+//             isMovable = false;
+//           }
+//         }
+//       }
+//       console.log("right", "isMovable", isMovable);
+//       if (isMovable) {
+//         currentTopLeft = nextTopLeft;
+//         tetrisData.forEach((col, i) => {
+//           for (var j = col.length - 1; j >= 0; j--) {
+//             const row = col[j];
+//             if (tetrisData[i][j + 1] === 0 && row < 10) {
+//               tetrisData[i][j + 1] = row;
+//               tetrisData[i][j] = 0;
+//             }
+//           }
+//         });
+//         draw();
+//       }
+//       break;
+//     }
+//     case downBtn: {
+//       // 키보드 아래쪽 클릭 = 하방측 한 칸 이동
+//       tick();
+//     }
+//   }
+// });
 
-window.addEventListener("click", ev => {
-  switch (ev.code) {
-    case rotateBtn: {
-      // 방향 전환
-      let currentBlockShape =
-        currentBlock.shape[currentBlock.currentShapeIndex];
-      let isChangeable = true;
-      const nextShapeIndex =
-        currentBlock.currentShapeIndex + 1 === currentBlock.shape.length
-          ? 0
-          : currentBlock.currentShapeIndex + 1;
-      const nextBlockShape = currentBlock.shape[nextShapeIndex];
-      for (
-        let i = currentTopLeft[0];
-        i < currentTopLeft[0] + currentBlockShape.length;
-        i++
-      ) {
-        // 돌린 이후 공간 체크
-        if (!isChangeable) break;
-        for (
-          let j = currentTopLeft[1];
-          j < currentTopLeft[1] + currentBlockShape.length;
-          j++
-        ) {
-          if (!tetrisData[i]) continue;
-          if (
-            nextBlockShape[i - currentTopLeft[0]][j - currentTopLeft[1]] > 0 &&
-            isInvalidBlock(tetrisData[i] && tetrisData[i][j])
-          ) {
-            console.log(i, j);
-            isChangeable = false;
-          }
-        }
-      }
-      console.log("isChangeable", isChangeable);
-      if (isChangeable) {
-        console.log(
-          "isChangeable",
-          JSON.parse(JSON.stringify(currentBlock)),
-          nextBlockShape
-        );
-        while (currentTopLeft[0] < 0) {
-          tick();
-        }
-        for (
-          let i = currentTopLeft[0];
-          i < currentTopLeft[0] + currentBlockShape.length;
-          i++
-        ) {
-          // 돌린 이후 공간 체크
-          for (
-            let j = currentTopLeft[1];
-            j < currentTopLeft[1] + currentBlockShape.length;
-            j++
-          ) {
-            if (!tetrisData[i]) continue;
-            let nextBlockShapeCell =
-              nextBlockShape[i - currentTopLeft[0]][j - currentTopLeft[1]];
-            if (nextBlockShapeCell > 0 && tetrisData[i][j] === 0) {
-              // 다음 모양은 있는데 현재 칸이 없으면
-              tetrisData[i][j] = currentBlock.numCode;
-            } else if (
-              nextBlockShapeCell === 0 &&
-              tetrisData[i][j] &&
-              tetrisData[i][j] < 10
-            ) {
-              // 다음 모양은 없는데  현재 칸이 있으면
-              tetrisData[i][j] = 0;
-            }
-          }
-        }
-        currentBlock.currentShapeIndex = nextShapeIndex;
-      }
-      draw();
-      break;
-    }
-    case ttickBtn: // 한방에 쭉 떨구기
-      while (tick()) {}
-      break;
-  }
-});
+// window.addEventListener("click", ev => {
+//   switch (ev.code) {
+//     case rotateBtn: {
+//       // 방향 전환
+//       let currentBlockShape =
+//         currentBlock.shape[currentBlock.currentShapeIndex];
+//       let isChangeable = true;
+//       const nextShapeIndex =
+//         currentBlock.currentShapeIndex + 1 === currentBlock.shape.length
+//           ? 0
+//           : currentBlock.currentShapeIndex + 1;
+//       const nextBlockShape = currentBlock.shape[nextShapeIndex];
+//       for (
+//         let i = currentTopLeft[0];
+//         i < currentTopLeft[0] + currentBlockShape.length;
+//         i++
+//       ) {
+//         // 돌린 이후 공간 체크
+//         if (!isChangeable) break;
+//         for (
+//           let j = currentTopLeft[1];
+//           j < currentTopLeft[1] + currentBlockShape.length;
+//           j++
+//         ) {
+//           if (!tetrisData[i]) continue;
+//           if (
+//             nextBlockShape[i - currentTopLeft[0]][j - currentTopLeft[1]] > 0 &&
+//             isInvalidBlock(tetrisData[i] && tetrisData[i][j])
+//           ) {
+//             console.log(i, j);
+//             isChangeable = false;
+//           }
+//         }
+//       }
+//       console.log("isChangeable", isChangeable);
+//       if (isChangeable) {
+//         console.log(
+//           "isChangeable",
+//           JSON.parse(JSON.stringify(currentBlock)),
+//           nextBlockShape
+//         );
+//         while (currentTopLeft[0] < 0) {
+//           tick();
+//         }
+//         for (
+//           let i = currentTopLeft[0];
+//           i < currentTopLeft[0] + currentBlockShape.length;
+//           i++
+//         ) {
+//           // 돌린 이후 공간 체크
+//           for (
+//             let j = currentTopLeft[1];
+//             j < currentTopLeft[1] + currentBlockShape.length;
+//             j++
+//           ) {
+//             if (!tetrisData[i]) continue;
+//             let nextBlockShapeCell =
+//               nextBlockShape[i - currentTopLeft[0]][j - currentTopLeft[1]];
+//             if (nextBlockShapeCell > 0 && tetrisData[i][j] === 0) {
+//               // 다음 모양은 있는데 현재 칸이 없으면
+//               tetrisData[i][j] = currentBlock.numCode;
+//             } else if (
+//               nextBlockShapeCell === 0 &&
+//               tetrisData[i][j] &&
+//               tetrisData[i][j] < 10
+//             ) {
+//               // 다음 모양은 없는데  현재 칸이 있으면
+//               tetrisData[i][j] = 0;
+//             }
+//           }
+//         }
+//         currentBlock.currentShapeIndex = nextShapeIndex;
+//       }
+//       draw();
+//       break;
+//     }
+//     case ttickBtn: // 한방에 쭉 떨구기
+//       while (tick()) {}
+//       break;
+//   }
+// });

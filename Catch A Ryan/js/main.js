@@ -34,7 +34,7 @@ function startGame() {
   timeUp = false;
   score = 0;
   whick();
-  setTimeout(() => (timeUp = true), 10000);
+  setTimeout(() => (timeUp = true), 20000);
 }
 
 function saud(e) {

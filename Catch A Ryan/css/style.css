@@ -71,7 +71,7 @@ h1 {
   bottom: -42px;
 }
 
-.mole {
+.ryan {
   background: url("../ryan.png") bottom center no-repeat;
   background-size: 50%;
   position: absolute;
@@ -81,7 +81,7 @@ h1 {
   transition: all 0.4s;
 }
 
-.hole.up .mole {
+.hole.up .ryan {
   top: -25%;
 }
 
